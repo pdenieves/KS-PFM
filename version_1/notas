@@ -1,5 +1,0 @@
-Esta es la primera versión. Lo que he hecho ha sido adaptar el código de la web de Keras (https://keras.io/examples/vision/super_resolution_sub_pixel) a la entrada de 200 imágenes que ha generado Aitor.
-
-Las imágenes borrosas de Aitor las he cambiado por otra reducidas con un factor 1:4. El resultado, conforme está el código, no daba buen resultado. De hecho, la imagen era peor. 
-
-Todavía ha mucho que hacer para que el resultado sea bueno. Por el momento sólo es aceptable. Seguiré trabajando en ello.
