@@ -1,0 +1,27 @@
+<!doctype html>
+<title>Download File</title>
+<h1>Download File</h1>
+
+<p><ul>
+  <li>{{ filename }}</li>
+  <li>{{ filename_new }}</li>
+</ul></p>
+
+{% if filename %}
+	<div>
+		<img src="{{ url_for('display_image', filename=filename) }}">
+		<img src="{{ url_for('display_image', filename=filename_new) }}">
+	</div>
+{% endif %}
+
+<body class="body">
+
+  <div class="container" align="left">
+    <a href="/return-files/{{ filename_new }}" target="blank"><button class='btn btn-default'>Download</button></a>
+  </div>
+
+  <div class="container" align="left">
+    <a href="{{ url_for('upload_file') }}" target="blank"><button class='btn btn-default'>Back</button></a>
+  </div>
+
+</body>
