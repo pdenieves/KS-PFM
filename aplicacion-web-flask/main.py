@@ -1,21 +1,10 @@
 import os
 from werkzeug.utils import secure_filename
 from flask import Flask, flash,request, redirect, url_for, send_file, render_template
-from app import app
-
-import shutil
 import webbrowser
 
-
-# Check if the file is an image
-def allowed_file(filename):
-	return '.' in filename and filename.rsplit('.', 1)[1].lower() in app.config['ALLOWED_EXTENSIONS']
-
-
-# Image processing (test function)
-def copy_file(original, target):
-	shutil.copyfile(original, target)
-
+from app import app
+from img_tools import allowed_file, generate_image
 
 # Upload API
 @app.route('/uploadfile', methods=['GET', 'POST'])
@@ -39,22 +28,27 @@ def upload_file():
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
             #print('upload_image filename: ' + filename)
             flash('Image successfully uploaded and displayed below')
-            filename_new = 'copy_' + filename
-            copy_file(os.path.join(app.config['UPLOAD_FOLDER'], filename), os.path.join(app.config['UPLOAD_FOLDER'], filename_new))
+            filename_new = generate_image(filename)
             return redirect('/downloadfile/'+ filename + '/' + filename_new)
             
         else:
             flash('Allowed image types are -> png, jpg, jpeg, gif')
             return redirect(request.url)
 
-    return render_template('upload_file.html')
+    if request.method == 'GET':
+        return render_template('upload_file.html')
 
 
 # Display images
 @app.route('/display/<filename>')
-def display_image(filename):
-	print('display_image filename: ' + filename)
-	return redirect(url_for('static', filename='uploads/' + filename), code=301)
+@app.route('/display/<filename>/<folder>')
+def display_image(filename, folder=''):
+	if folder == '':
+		folderpath = 'updates/'
+	else:
+		folderpath = folder + '/'
+	print('***' + folder)
+	return redirect(url_for('static', filename=folderpath + filename), code=301)
 
 
 # Download API
@@ -66,10 +60,11 @@ def download_file(filename, filename_new=''):
 
 @app.route('/return-files/<filename>')
 def return_files(filename):
-    file_path = app.config['UPLOAD_FOLDER'] + filename
+    file_path = app.config['GENERATED_FOLDER'] + filename
     return send_file(file_path, as_attachment=True, attachment_filename='')
 
 
 if __name__ == "__main__":
     webbrowser.open_new(app.config['HOME_PAGE'])
-    app.run(debug=True)
+    app.run(debug=True, use_reloader=False)
+    #app.run()

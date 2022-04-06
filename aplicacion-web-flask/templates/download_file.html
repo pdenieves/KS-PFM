@@ -10,7 +10,7 @@
 {% if filename %}
 	<div>
 		<img src="{{ url_for('display_image', filename=filename) }}">
-		<img src="{{ url_for('display_image', filename=filename_new) }}">
+		<img src="{{ url_for('display_image', filename=filename_new, folder='generated') }}">
 	</div>
 {% endif %}
 
@@ -21,7 +21,7 @@
   </div>
 
   <div class="container" align="left">
-    <a href="{{ url_for('upload_file') }}" target="blank"><button class='btn btn-default'>Back</button></a>
+    <a href="{{ url_for('upload_file') }}"><button class='btn btn-default'>Back</button></a>
   </div>
 
 </body>

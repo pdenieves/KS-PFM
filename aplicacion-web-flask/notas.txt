@@ -1,29 +1,32 @@
 
-Notas de la versión 1 (06-04-2022)
+Notas de la versión 2 (06-04-2022)
 -----------------------------------
-Esta es una aplicación sencilla para subir imágenes, procesarlas y descargarlas.
+Esta es una aplicación sencilla para subir imágenes, procesarlas y descargarlas. Falta añadir funcionalidad secundaria y mejorar la apariencia.
 
-Es un esqueleto muy básico de lo que puede ser la aplicación web. Básicamente, son 2 páginas:
+La estructura es más compleja que la versión 1. Sigue formada por 2 páginas:
  - upload_file: página principal y formulario de subida de imágenes. Si el fichero no tiene una de las extensiones configuradas, lo rechaza.
- - download_file: página que muestra la imagen original y la transformada. Permite descargar la nueva imagen.
+ - download_file: página que muestra la imagen original y la transformada. Permite descargar la nueva imagen. La imagen descargada se deja en la carpeta 'Downloads'.
 
-También hay 2 ficheros .py:
+Ficheros de código python (.py:<)
  - app: contiene la configuración del la web.
  - main: Componente principal. La lógica de la herramienta se construye aquí.
+ - img_tools: Las funciones de tratamiento de las imágenes están aquí, como es el tratameinto a partir del modelo entrenado.
 
 Las carpetas en local son:
  - raiz: donde se dejan lso ficheros .py
- - static/uploads: donde se van metiendo los ficheros originales y los generados. En otras versiones, habrá que separarlos, pero por el momento, he mantenido la estructura de lso ejemplos que he visto.
+ - static/uploads: donde se van metiendo los ficheros originales.
+ - static/generated: donde se van metiendo los ficheros generados. Se les añade el sufijo '_transformed'.
+ - static/models: Fichero que contiene el modelo entrenado. Conforme se mejore la red neuronal, se va actualizando.
  - templates: páginas .html
 
-En esta versión, la imagen no se procesa, si no que simplemente se copia. Como el objetivo es construir la web, la parte de llamar al código para que genere la nueva imagen ya llegará. La imagen descargada se deja en la carpeta 'Downloads'.
+En esta versión, la imagen se procesa a partir del modelo entgrenado (en la versión actual, el modelo del notebuook). Con este punto hecho, lo que es la web queda ya bastante avanzada. A parte de mejorarla visualmente y funcionalmente, el ya lo tenemos cubierto.
 
 
 
 
-Para levantar la herramienta
+Pasos para levantar la herramienta
 -----------------------------------
-Para arrancar al web, sólo ha que seguir estos pasos:
+Para arrancar la web, sólo ha que seguir estos pasos:
  - En una consola, desde la carpeta raiz, ejecutar: 'python3 main.py'. 
  - Automáticamente, se abrirá una página del navegador. 
  - En caso de no hacerlo, o que se cierre, la url de la página principal es: 'http://localhost:5000/uploadfile'
