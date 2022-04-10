@@ -1,0 +1,73 @@
+body{
+    background: url(/static/images/bg.png) no-repeat #FFF;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    font-family: "Open Sans", arial, sans-serif;
+    font-weight: 300;
+    color: #FFF;
+    text-align: center;
+}
+h1 {
+    margin-top: 40px;
+}
+p {
+    font-size: 1.2em;
+}
+
+.juxtapose {
+    max-width: 300px;
+    margin: 20px auto 50px;
+}
+
+form {
+    aling: center;
+    margin: 0 auto;
+}
+.selectFile {
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 7px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+.selectFile input[type="file"] {
+    display: none;
+}
+input[type="submit"] {
+    border: 1px solid #FFF;
+    display: inline-block;
+    padding: 7px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    background-color: rgb(255,109,0);
+    color: #FFF;
+    font-size: 1.1em;
+    margin-left: 20px;
+}
+table {
+    margin: 0 auto;
+}
+table tr td {
+    padding: 5px 20px;
+    text-align: center;
+}
+table tr td button {
+    border: 1px solid #FFF;
+    display: inline-block;
+    padding: 7px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    background-color: rgb(255,109,0);
+    color: #FFF;
+    font-size: 1.1em;
+}
+.back {
+    margin-top: 50px;
+    font-size: 0.8em;
+}
+.back a {
+    color: #FFF;
+    margin-left: -300px;
+}
