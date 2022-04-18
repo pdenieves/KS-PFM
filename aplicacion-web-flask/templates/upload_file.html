@@ -1,9 +1,44 @@
 <!doctype html>
-    <title>Upload new File</title>
-    <h1>Upload new File</h1>
+<head>
+    <title>LowFace2High</title>
+    <link rel="stylesheet" href="/static/css/main.css">
+</head>
+<body>
+    <h1>LowFace2High</h1>
+    <p>Increase the quality of face images</p>
+    
+    <div id="juxtapose"></div>
+    <script src="https://cdn.knightlab.com/libs/juxtapose/latest/js/juxtapose.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.knightlab.com/libs/juxtapose/latest/css/juxtapose.css">
+    <script>
+    ids = [297,365,446,474];
+    id = ids[ Math.floor(Math.random()*ids.length) ]
+    slider = new juxtapose.JXSlider(
+        "#juxtapose",
+        [
+            {
+                src: "/static/demo/file" + id + "_low.jpg",
+            },
+            {
+                src: "/static/demo/file" + id + "_high.jpg",
+            }
+        ],
+        {
+            animate: true,
+            showLabels: false,
+            showCredits: false,
+            startingPosition: "50%",
+            makeResponsive: true
+        });
+    </script>
+
+    
+    
     <form action="" method=post enctype=multipart/form-data>
-      <p>
-         <input type=file name=file>
-         <input type=submit value=Upload>
-      </p>
+        <label class="selectFile">
+            <input type="file" name="file">
+            select file
+        </label>
+        <input type="submit" value="upload file">
     </form>
+</body>
