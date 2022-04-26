@@ -100,6 +100,40 @@ def predict_image(model, image):
     
     return predicted_img
 
+def transform_image( image, target_width, target_height ): 
+    resized_image = image
+    width, height = image.size
+    new_width = width
+    new_height = height
+    
+    if height < target_height:
+        ratio = width / height
+        new_height = target_height
+        new_width = round( ratio * new_height )
+    elif width < target_width:
+        ratio = height / width
+        new_width = target_width
+        new_height = round( ratio * new_width )
+    resized_image = resized_image.resize( (new_width,new_height), Image.ANTIALIAS)
+    width, height = resized_image.size
+    if width > height:
+        ratio = width / height
+        new_height = target_height
+        new_width = round( ratio * new_height )
+    else:
+        ratio = height / width
+        new_width = target_width
+        new_height = round( ratio * new_width )
+    resized_image = resized_image.resize( (new_width,new_height), Image.ANTIALIAS)
+    
+    left = (new_width - target_width)/2
+    top = (new_height - target_height)/2
+    right = (new_width + target_width)/2
+    bottom = (new_height + target_height)/2
+    cropped_image = resized_image.crop( (left, top, right, bottom) )
+    
+    return cropped_image
+
 
 # #####################################
 # Función que genera la imagen
@@ -112,9 +146,12 @@ def generate_image(filename):
 
     # Load image to be transformed
     img_original = Image.open(app.config['UPLOAD_FOLDER'] + filename)
+    
+    # Transform (scale and crop) image to 300x300
+    img_transformed = transform_image( img_original, 100, 100 )
 
     # Generate the new image
-    img_generated = predict_image(model, img_original)
+    img_generated = predict_image(model, img_transformed)
     
     # Resaltar bordes para aumentar la nitidez
     img_improved = sharpen(img_generated)
