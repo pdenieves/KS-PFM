@@ -76,6 +76,53 @@ def rebuild_image(y, cb, cr):
     return np.array(final)
 
 
+# Función para obtener el tipo de imagen
+def get_image_type(filename):
+    if filename.endswith(".jpg") or filename.endswith(".jpeg"):
+        imagetype = 'JPG'
+    elif filename.endswith(".png"):
+        imagetype = 'PNG' 
+    else:
+        imagetype = ''
+    return  imagetype
+
+
+# Conversión del la imagen en formato PNG a JPG
+def png_to_jpg(filename, path):
+    filetype = get_image_type(filename)
+    
+    if filetype == 'PNG':
+        # Load .png image
+        image = cv2.imread(os.path.join(path, filename))
+        name_jpg = filename.replace('.png', '.jpg')
+
+        # Save .jpg image
+        img_jpg = os.path.join(path, name_jpg)
+        cv2.imwrite(img_jpg, image, [int(cv2.IMWRITE_JPEG_QUALITY), 100])
+    else:
+        name_jpg = ''
+        
+    return name_jpg
+
+
+# Conversión del la imagen en formato JPG a PNG
+def jpg_to_png(filename, path):
+    filetype = get_image_type(filename)
+    
+    if filetype == 'JPG':
+        # Load .jpg image
+        image = cv2.imread(os.path.join(path, filename))
+        name_png = filename.replace('.jpg', '.png')
+
+        # Save .png image
+        img_png = os.path.join(path, name_png)
+        cv2.imwrite(img_png, image)
+    else:
+        name_png = ''
+        
+    return name_png
+
+
 # Filtro para aumentar la nitidez de la imagen
 def sharpen(img):
     sharpen_filter = np.array([
@@ -100,6 +147,8 @@ def predict_image(model, image):
     
     return predicted_img
 
+
+# Transformamos el tamaño de la imagen para ajustarlo a la entrada del modelo
 def transform_image( image, target_width, target_height ): 
     resized_image = image
     width, height = image.size
@@ -144,21 +193,30 @@ def generate_image(filename):
     model = load_model(app.config['MODEL_FOLDER'], custom_objects={"psnr" : psnr})
     #model.summary()
 
-    # Load image to be transformed
+    # Si la imagen no es JPG, la convertimos
+    filetype = get_image_type(filename)
+    if filetype == 'PNG':
+        filename = png_to_jpg(filename, app.config['UPLOAD_FOLDER'])
+
+    # Cargamos la imagen
     img_original = Image.open(app.config['UPLOAD_FOLDER'] + filename)
-    
+
     # Transform (scale and crop) image to 300x300
     img_transformed = transform_image( img_original, 100, 100 )
 
-    # Generate the new image
+    # Generamos la nueva imagen
     img_generated = predict_image(model, img_transformed)
-    
+
     # Resaltar bordes para aumentar la nitidez
     img_improved = sharpen(img_generated)
     img_final = array_to_img(img_improved)
 
-    # Save de new image
+    # Guardamos la imagen nueva
     filename_new = filename.rsplit('.', 1)[0] + '_transformed.' + filename.rsplit('.', 1)[1]
     img_final.save(app.config['GENERATED_FOLDER'] + filename_new)
-    
+
+    # Si la imagen origial no es JPG, la convertimos
+    if filetype == 'PNG':
+        filename_new = jpg_to_png(filename_new, app.config['GENERATED_FOLDER'])
+
     return filename_new
