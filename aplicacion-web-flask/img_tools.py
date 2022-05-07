@@ -9,8 +9,9 @@ from tensorflow.keras.models import load_model
 
 from PIL import Image
 import cv2 as cv2
+import imquality.brisque as brisque
 
-from app import app
+from app import app, log_image
 
 
 # Revisamos si se trata de una imagen a partir de la extensión del fichero
@@ -214,6 +215,12 @@ def generate_image(filename):
     # Guardamos la imagen nueva
     filename_new = filename.rsplit('.', 1)[0] + '_transformed.' + filename.rsplit('.', 1)[1]
     img_final.save(app.config['GENERATED_FOLDER'] + filename_new)
+    log_image(filename, 'new-file: ' + filename_new)
+    
+    # Volcamos al fichero de control de imágenes las estadísticas
+    log_image(filename, 'brisque-original: ' + str(brisque.score(img_original)))
+    log_image(filename, 'brisque-modelo: ' + str(brisque.score(img_generated)))
+    log_image(filename, 'brisque-final: ' + str(brisque.score(img_final)))
 
     # Si la imagen origial no es JPG, la convertimos
     if filetype == 'PNG':

@@ -12,7 +12,7 @@ def upload_file():
     if request.method == 'POST':
         # check if the post request has the file part
         if 'file' not in request.files:
-            print('no file')
+            app.logger.info('No se ha encontrado el fichero')
             return redirect(request.url)
             
         file = request.files['file']
@@ -20,19 +20,19 @@ def upload_file():
         # submit a empty part without filename
         
         if file.filename == '':
-            print('no filename')
+            app.logger.info(f'Nombre de fichero no válido')
             return redirect(request.url)
             
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
             #print('upload_image filename: ' + filename)
-            flash('Image successfully uploaded and displayed below')
+            app.logger.info(filename + ' : Imagen cargada')
             filename_new = generate_image(filename)
             return redirect('/downloadfile/'+ filename + '/' + filename_new)
             
         else:
-            flash('Allowed image types are -> png, jpg, jpeg, gif')
+            app.logger.info(filename + ' : Extensión del fichero no válida. Los tipos permitidos son: png, jpg, jpeg')
             return redirect(request.url)
 
     if request.method == 'GET':
@@ -47,7 +47,6 @@ def display_image(filename, folder=''):
 		folderpath = 'updates/'
 	else:
 		folderpath = folder + '/'
-	print('***' + folder)
 	return redirect(url_for('static', filename=folderpath + filename), code=301)
 
 
@@ -55,6 +54,7 @@ def display_image(filename, folder=''):
 @app.route("/downloadfile/<filename>", methods = ['GET'])
 @app.route("/downloadfile/<filename>/<filename_new>", methods = ['GET'])
 def download_file(filename, filename_new=''):
+    app.logger.info(filename_new + ' : Descargando imagen')
     return render_template('download_file.html', filename=filename, filename_new=filename_new)
 
 
@@ -65,6 +65,10 @@ def return_files(filename):
 
 
 if __name__ == "__main__":
+    app.logger.warning('Levantando la web')
+
     webbrowser.open_new(app.config['HOME_PAGE'])
     app.run(debug=True, use_reloader=False)
-    #app.run()
+
+    app.logger.warning('Web no disponible')
+

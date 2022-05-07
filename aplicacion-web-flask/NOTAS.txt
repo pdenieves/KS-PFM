@@ -1,25 +1,26 @@
 
 Notas de la versión 2 (06-04-2022)
 -----------------------------------
-Esta es una aplicación sencilla para subir imágenes, procesarlas y descargarlas. Falta añadir funcionalidad secundaria y mejorar la apariencia.
+Esta es una aplicación sencilla para subir imágenes, procesarlas y descargarlas.
 
 La estructura es más compleja que la versión 1. Sigue formada por 2 páginas:
  - upload_file: página principal y formulario de subida de imágenes. Si el fichero no tiene una de las extensiones configuradas, lo rechaza.
  - download_file: página que muestra la imagen original y la transformada. Permite descargar la nueva imagen. La imagen descargada se deja en la carpeta 'Downloads'.
 
-Ficheros de código python (.py:<)
+Ficheros de código python (.py)
  - app: contiene la configuración del la web.
  - main: Componente principal. La lógica de la herramienta se construye aquí.
  - img_tools: Las funciones de tratamiento de las imágenes están aquí, como es el tratameinto a partir del modelo entrenado.
 
 Las carpetas en local son:
  - raiz: donde se dejan lso ficheros .py
+ - static/css: estilos de la web.
  - static/uploads: donde se van metiendo los ficheros originales.
  - static/generated: donde se van metiendo los ficheros generados. Se les añade el sufijo '_transformed'.
- - static/models: Fichero que contiene el modelo entrenado. Conforme se mejore la red neuronal, se va actualizando.
+ - static/models: ficheros que contienen el modelo entrenado. Conforme se mejore la red neuronal, se va actualizando.
+ - static/demo: ficheros de demostración para la web. No se utilizan en la generación de las nnuevas imágenes.
  - templates: páginas .html
-
-En esta versión, la imagen se procesa a partir del modelo entgrenado (en la versión actual, el modelo del notebuook). Con este punto hecho, lo que es la web queda ya bastante avanzada. A parte de mejorarla visualmente y funcionalmente, el ya lo tenemos cubierto.
+ - log: fichero de log de la aplicación, y del fichero que recoge la información básica de los ficheros y las transformaciones para monitorizar las transformaciones (métricas de negocio)
 
 
 
