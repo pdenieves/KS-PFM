@@ -1,0 +1,30 @@
+2022-05-08 18:01:01,798 WARNING app MainThread : Levantando la web
+2022-05-08 18:01:01,999 INFO werkzeug MainThread :  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2022-05-08 18:01:02,429 INFO werkzeug Thread-1 : 127.0.0.1 - - [08/May/2022 18:01:02] "GET /login/ HTTP/1.1" 200 -
+2022-05-08 18:01:02,664 INFO werkzeug Thread-2 : 127.0.0.1 - - [08/May/2022 18:01:02] "[36mGET /static/css/main.css HTTP/1.1[0m" 304 -
+2022-05-08 18:01:02,671 INFO werkzeug Thread-3 : 127.0.0.1 - - [08/May/2022 18:01:02] "[36mGET /static/images/bg.png HTTP/1.1[0m" 304 -
+2022-05-08 18:01:11,329 INFO werkzeug Thread-4 : 127.0.0.1 - - [08/May/2022 18:01:11] "POST /login/ HTTP/1.1" 200 -
+2022-05-08 18:01:11,345 INFO werkzeug Thread-5 : 127.0.0.1 - - [08/May/2022 18:01:11] "[36mGET /static/css/main.css HTTP/1.1[0m" 304 -
+2022-05-08 18:01:16,432 INFO werkzeug Thread-6 : 127.0.0.1 - - [08/May/2022 18:01:16] "POST /login/ HTTP/1.1" 200 -
+2022-05-08 18:01:16,743 INFO werkzeug Thread-7 : 127.0.0.1 - - [08/May/2022 18:01:16] "[36mGET /static/css/main.css HTTP/1.1[0m" 304 -
+2022-05-08 18:01:26,826 INFO werkzeug Thread-8 : 127.0.0.1 - - [08/May/2022 18:01:26] "POST /login/ HTTP/1.1" 200 -
+2022-05-08 18:01:26,841 INFO werkzeug Thread-9 : 127.0.0.1 - - [08/May/2022 18:01:26] "[36mGET /static/css/main.css HTTP/1.1[0m" 304 -
+2022-05-08 18:01:33,136 WARNING app Thread-10 : Login realizado
+2022-05-08 18:01:33,137 INFO werkzeug Thread-10 : 127.0.0.1 - - [08/May/2022 18:01:33] "[32mPOST /login/ HTTP/1.1[0m" 302 -
+2022-05-08 18:01:33,444 INFO werkzeug Thread-11 : 127.0.0.1 - - [08/May/2022 18:01:33] "GET /uploadfile HTTP/1.1" 200 -
+2022-05-08 18:01:33,771 INFO werkzeug Thread-12 : 127.0.0.1 - - [08/May/2022 18:01:33] "[36mGET /static/css/main.css HTTP/1.1[0m" 304 -
+2022-05-08 18:01:34,035 INFO werkzeug Thread-13 : 127.0.0.1 - - [08/May/2022 18:01:34] "[36mGET /static/demo/file474_low.jpg HTTP/1.1[0m" 304 -
+2022-05-08 18:01:34,099 INFO werkzeug Thread-14 : 127.0.0.1 - - [08/May/2022 18:01:34] "[36mGET /static/demo/file474_high.jpg HTTP/1.1[0m" 304 -
+2022-05-08 18:01:47,369 INFO app Thread-15 : file1029_low.jpg : Imagen cargada
+2022-05-08 18:01:54,834 INFO werkzeug Thread-15 : 127.0.0.1 - - [08/May/2022 18:01:54] "[32mPOST /uploadfile HTTP/1.1[0m" 302 -
+2022-05-08 18:01:54,839 INFO app Thread-16 : file1029_low_transformed.jpg : Descargando imagen
+2022-05-08 18:01:54,843 INFO werkzeug Thread-16 : 127.0.0.1 - - [08/May/2022 18:01:54] "GET /downloadfile/file1029_low.jpg/file1029_low_transformed.jpg HTTP/1.1" 200 -
+2022-05-08 18:01:55,168 INFO werkzeug Thread-17 : 127.0.0.1 - - [08/May/2022 18:01:55] "[36mGET /static/css/main.css HTTP/1.1[0m" 304 -
+2022-05-08 18:01:55,171 INFO werkzeug Thread-18 : 127.0.0.1 - - [08/May/2022 18:01:55] "GET /static/uploads/file1029_low.jpg HTTP/1.1" 200 -
+2022-05-08 18:01:55,174 INFO werkzeug Thread-19 : 127.0.0.1 - - [08/May/2022 18:01:55] "GET /static/generated/file1029_low_transformed.jpg HTTP/1.1" 200 -
+2022-05-08 18:02:01,620 INFO werkzeug Thread-20 : 127.0.0.1 - - [08/May/2022 18:02:01] "GET /return-files/file1029_low_transformed.jpg HTTP/1.1" 200 -
+2022-05-08 18:02:44,929 INFO werkzeug Thread-21 : 127.0.0.1 - - [08/May/2022 18:02:44] "GET /uploadfile HTTP/1.1" 200 -
+2022-05-08 18:02:45,235 INFO werkzeug Thread-22 : 127.0.0.1 - - [08/May/2022 18:02:45] "[36mGET /static/css/main.css HTTP/1.1[0m" 304 -
+2022-05-08 18:02:45,567 INFO werkzeug Thread-23 : 127.0.0.1 - - [08/May/2022 18:02:45] "[36mGET /static/demo/file446_low.jpg HTTP/1.1[0m" 304 -
+2022-05-08 18:02:45,571 INFO werkzeug Thread-24 : 127.0.0.1 - - [08/May/2022 18:02:45] "[36mGET /static/demo/file446_high.jpg HTTP/1.1[0m" 304 -
+2022-05-08 18:03:05,053 WARNING app MainThread : Web no disponible

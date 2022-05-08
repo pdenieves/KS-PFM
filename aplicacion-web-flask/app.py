@@ -11,8 +11,9 @@ app.config['MODEL_FOLDER'] = 'static/models/'
 app.config['LOG_FOLDER'] = 'log/'
 
 app.config['ALLOWED_EXTENSIONS'] = set(['png', 'jpg', 'jpeg'])
+app.config['ALLOWED_USERS'] = set(['pedro', 'aitor', 'sergio', 'victoria'])
 
-app.config['HOME_PAGE'] = 'http://localhost:5000/uploadfile'
+app.config['HOME_PAGE'] = 'http://localhost:5000/login'
 
 fecha_hora = time.strftime("%Y%m%d-%H%M%S")
 logging.basicConfig(filename=app.config['LOG_FOLDER'] + f'web-flask-' + fecha_hora + '.log', level=logging.INFO, format=f'%(asctime)s %(levelname)s %(name)s %(threadName)s : %(message)s')

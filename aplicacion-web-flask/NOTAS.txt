@@ -6,6 +6,7 @@ Esta es una aplicación sencilla para subir imágenes, procesarlas y descargarla
 La estructura es más compleja que la versión 1. Sigue formada por 2 páginas:
  - upload_file: página principal y formulario de subida de imágenes. Si el fichero no tiene una de las extensiones configuradas, lo rechaza.
  - download_file: página que muestra la imagen original y la transformada. Permite descargar la nueva imagen. La imagen descargada se deja en la carpeta 'Downloads'.
+ - login: página de inicio.
 
 Ficheros de código python (.py)
  - app: contiene la configuración del la web.
@@ -15,10 +16,11 @@ Ficheros de código python (.py)
 Las carpetas en local son:
  - raiz: donde se dejan lso ficheros .py
  - static/css: estilos de la web.
+ - static/images: imágenes de fondo de la web. 
  - static/uploads: donde se van metiendo los ficheros originales.
  - static/generated: donde se van metiendo los ficheros generados. Se les añade el sufijo '_transformed'.
  - static/models: ficheros que contienen el modelo entrenado. Conforme se mejore la red neuronal, se va actualizando.
- - static/demo: ficheros de demostración para la web. No se utilizan en la generación de las nnuevas imágenes.
+ - static/demo: ficheros de demostración para la web. No se utilizan en la generación de las nuevas imágenes.
  - templates: páginas .html
  - log: fichero de log de la aplicación, y del fichero que recoge la información básica de los ficheros y las transformaciones para monitorizar las transformaciones (métricas de negocio)
 
@@ -32,3 +34,7 @@ Para arrancar la web, sólo ha que seguir estos pasos:
  - Automáticamente, se abrirá una página del navegador. 
  - En caso de no hacerlo, o que se cierre, la url de la página principal es: 'http://localhost:5000/uploadfile'
  - La aplicación se detiene con control-C en la consola (puede que con una vez sólo no se detenga y haya que hacerlo 2 veces seguidas)
+ 
+Login
+-----------------------------------
+Como es una página de ejemplo, la autenticación es muy básica. Los usuarios configurados son: 'pedro', 'aitor', 'sergio' y victoria'. Las passwords son el nombre del usuario. 

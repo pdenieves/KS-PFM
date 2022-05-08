@@ -1,10 +1,25 @@
 import os
 from werkzeug.utils import secure_filename
-from flask import Flask, flash,request, redirect, url_for, send_file, render_template
+from flask import Flask, flash, request, redirect, url_for, send_file, render_template
 import webbrowser
 
 from app import app
 from img_tools import allowed_file, generate_image
+
+
+# Login
+@app.route("/login/", methods=["GET", "POST"])
+def login_page():
+    error = None
+    if request.method == "POST":
+        user = request.form['username']
+        if user and request.form['password'] == user and user in app.config['ALLOWED_USERS']:
+            app.logger.warning('Login realizado')
+            return redirect('/uploadfile')
+        else:
+            error = 'User/password not valid!'
+    return render_template('login.html', error=error)
+
 
 # Upload API
 @app.route('/uploadfile', methods=['GET', 'POST'])
