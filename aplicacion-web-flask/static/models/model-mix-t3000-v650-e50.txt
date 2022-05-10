@@ -1,0 +1,3 @@
+Entrenamiento: 3000 imágenes de cadas, genéricas y gatos
+Validación: 50 imágenes de cadas, genéricas y gatos
+Épocas: 50
