@@ -1,29 +1,70 @@
 <!doctype html>
 <head>
-    <title>LowFace2High</title>
+    <title>UnBlurAI</title>
     <link rel="stylesheet" href="/static/css/main.css">
 </head>
 <body>
-    <h1>LowFace2High</h1>
-    <p>Increase the quality of face images</p>
+  <div id="header">
+    <table width="800">
+      <tr><td><img src="/static/images/logo-500x360.png" width="100px" /></td></tr>
+    </table>
+  </div>
+  <p>Scale your face images... <strong>without quality loss!</strong></p>
 
-{% block body %}
+  {% block body %}
   {% if error %}
-    <p class=error><strong>Error:</strong> {{ error }}
+  <p class=error><strong>Error:</strong> {{ error }}</p>
   {% endif %}
-  <form action="" method=post enctype=multipart/form-data>
-      <table>
-      <tr><td>
-           <input name="username">
-      </td></tr>
-      <tr><td>
-          <input type="password" name="password">
-      </td></tr>
-      <tr><td>
-          <input type="submit" value="login">
-      </td></tr>
-      </table>
-  </form>
-{% endblock %}
+
+  <table width="800">
+    <tr>
+      <td width="400">
+        <div id="juxtapose"></div>
+        <script src="https://cdn.knightlab.com/libs/juxtapose/latest/js/juxtapose.min.js"></script>
+        <link rel="stylesheet" href="https://cdn.knightlab.com/libs/juxtapose/latest/css/juxtapose.css">
+        <script>
+        ids = [297,365,446,474];
+        id = ids[ Math.floor(Math.random()*ids.length) ]
+        slider = new juxtapose.JXSlider(
+            "#juxtapose",
+            [
+                {
+                  src: "/static/demo/file" + id + "_low.jpg",
+                  label: "No UnBlurAI"
+                },
+                {
+                  src: "/static/demo/file" + id + "_high.jpg",
+                  label: "Using UnBlurAI"
+                }
+            ],
+            {
+                animate: true,
+                showLabels: true,
+                showCredits: false,
+                startingPosition: "40%",
+                makeResponsive: true
+            });
+        </script>
+      </td>
+      <td style="border: 1px solid white;">
+        <p>Access to scale your images</p>
+        <form id="login" action="" method="post" enctype="multipart/form-data">
+            <table>
+            <tr><td>
+                 <input type="text" name="username" placeholder="user">
+            </td></tr>
+            <tr><td>
+                <input type="password" name="password" placeholder="pass">
+            </td></tr>
+            <tr><td>
+                <input type="submit" value="login">
+            </td></tr>
+            </table>
+        </form>
+      </td>
+    </tr>
+  </table>
+
+  {% endblock %}
 
 </body>

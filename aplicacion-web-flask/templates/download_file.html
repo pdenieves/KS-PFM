@@ -1,36 +1,35 @@
-
 <!doctype html>
 <head>
-    <title>LowFace2High</title>
+    <title>UnBlurAI</title>
     <link rel="stylesheet" href="/static/css/main.css">
 </head>
 <body>
-    <h1>LowFace2High</h1>
-    <p>Increase the quality of face images</p>
-    <table>
-        <tr>
-            <td>You have uploaded this file:</td>
-            <td>And this is the improved version:</td>
-        </tr>
-        <tr>
-            <td><img src="/static/uploads/{{ filename }}" /></td>
-            <td><img src="/static/generated/{{ filename_new }}" /></td>
-        </tr>
-        <tr>
-            <td/>
-            <td>
-                  <a href="/return-files/{{ filename_new }}" target="blank"><button>download</button></a>
-            </td>
-        </tr>
+  <div id="header">
+    <table width="800">
+      <tr><td><img src="/static/images/logo-500x360.png" width="100px" /></td></tr>
     </table>
-    <p>
-        <div>You can check the improve!</div>
+  </div>
+  <p>&nbsp;</p>
+
+  <table width="800">
+    <tr>
+      <td width="400">
         <div class="juxtapose">
-            <img src="/static/uploads/{{ filename }}" />
-            <img src="/static/generated/{{ filename_new }}" />
+            <img data-label="Direct Scaled" src="/static/uploads/{{ filename }}" />
+            <img data-label="Scaled With UnBlurAI" src="/static/generated/{{ filename_new }}" />
         </div>
         <script src="https://cdn.knightlab.com/libs/juxtapose/latest/js/juxtapose.min.js"></script>
         <link rel="stylesheet" href="https://cdn.knightlab.com/libs/juxtapose/latest/css/juxtapose.css">
-    </p>
-    <div class="back"><a href="/uploadfile"><< Upload another image</a></div>
+      </td>
+      <td style="border: 1px solid white;">
+        <p>Download the scaled photo with UnBlurAI</p>
+        <a href="/return-files/{{ filename_new }}" target="blank"><button>download</button></a>
+      </td>
+    </tr>
+    <tr>
+      <td><div class="back"><a href="/uploadfile"><< Try another image</a></div></td>
+    </tr>
+  </table>
+
+
 </body>
