@@ -11,7 +11,7 @@ app.config['MODEL_FOLDER'] = 'static/models/'
 app.config['LOG_FOLDER'] = 'log/'
 
 app.config['ALLOWED_EXTENSIONS'] = set(['png', 'jpg', 'jpeg'])
-app.config['ALLOWED_USERS'] = set(['pedro', 'aitor', 'sergio', 'victoria'])
+app.config['ALLOWED_USERS'] = set(['pedro', 'aitor', 'sergio', 'victoria', 'demo'])
 
 app.config['HOME_PAGE'] = 'http://localhost:5000/login'
 
