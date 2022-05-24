@@ -4,7 +4,7 @@ from flask import Flask, flash, request, redirect, url_for, send_file, render_te
 import webbrowser
 
 from app import app
-from img_tools import allowed_file, generate_image
+from img_tools import allowed_file, allowed_size, generate_image
 
 
 # Login
@@ -41,14 +41,20 @@ def upload_file():
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-            #print('upload_image filename: ' + filename)
+            
+            if not allowed_size(os.path.join(app.config['UPLOAD_FOLDER'], file.filename)):
+                error = 'El tamaño de la imagen no es válido.'
+                app.logger.info(file.filename + ' : ' + error)
+                return render_template('upload_file.html', error=error)
+
             app.logger.info(filename + ' : Imagen cargada')
             filename_new = generate_image(filename)
             return redirect('/downloadfile/'+ filename + '/' + filename_new)
             
         else:
-            app.logger.info(filename + ' : Extensión del fichero no válida. Los tipos permitidos son: png, jpg, jpeg')
-            return redirect(request.url)
+            error = 'Extensión del fichero no válida. Los tipos permitidos son: png, jpg, jpeg'
+            app.logger.info(file.filename + ' : ' + error)
+            return render_template('upload_file.html', error=error)
 
     if request.method == 'GET':
         return render_template('upload_file.html')
