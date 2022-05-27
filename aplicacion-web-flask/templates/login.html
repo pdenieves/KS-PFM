@@ -1,70 +1,98 @@
-<!doctype html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>UnBlurAI</title>
     <link rel="stylesheet" href="/static/css/main.css">
+	<title>Login V1</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->	
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="css/util.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+<!--===============================================================================================-->
 </head>
 <body>
-  <div id="header">
-    <table width="800">
-      <tr><td><img src="/static/images/logo-500x360.png" width="100px" /></td></tr>
-    </table>
-  </div>
-  <p>Scale your face images... <strong>without quality loss!</strong></p>
 
-  {% block body %}
-  {% if error %}
-  <p class=error><strong>Error:</strong> {{ error }}</p>
-  {% endif %}
+	<div class="limiter">
+		<div class="container-login100">
 
-  <table width="800">
-    <tr>
-      <td width="400">
-        <div id="juxtapose"></div>
-        <script src="https://cdn.knightlab.com/libs/juxtapose/latest/js/juxtapose.min.js"></script>
-        <link rel="stylesheet" href="https://cdn.knightlab.com/libs/juxtapose/latest/css/juxtapose.css">
-        <script>
-        ids = [297,365,446,474];
-        id = ids[ Math.floor(Math.random()*ids.length) ]
-        slider = new juxtapose.JXSlider(
-            "#juxtapose",
-            [
-                {
-                  src: "/static/demo/file" + id + "_low.jpg",
-                  label: "No UnBlurAI"
-                },
-                {
-                  src: "/static/demo/file" + id + "_high.jpg",
-                  label: "Using UnBlurAI"
-                }
-            ],
-            {
-                animate: true,
-                showLabels: true,
-                showCredits: false,
-                startingPosition: "40%",
-                makeResponsive: true
-            });
-        </script>
-      </td>
-      <td style="border: 1px solid white;">
-        <p>Access to scale your images</p>
-        <form id="login" action="" method="post" enctype="multipart/form-data">
-            <table>
-            <tr><td>
-                 <input type="text" name="username" placeholder="user">
-            </td></tr>
-            <tr><td>
-                <input type="password" name="password" placeholder="pass">
-            </td></tr>
-            <tr><td>
-                <input type="submit" value="login">
-            </td></tr>
-            </table>
-        </form>
-      </td>
-    </tr>
-  </table>
 
-  {% endblock %}
+				<form class="login100-form validate-form">
+					<span class="login100-form-title">
+						Member Login
+					</span>
+
+					<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+						<input class="input100" type="text" name="email" placeholder="Email">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-envelope" aria-hidden="true"></i>
+						</span>
+					</div>
+
+					<div class="wrap-input100 validate-input" data-validate = "Password is required">
+						<input class="input100" type="password" name="pass" placeholder="Password">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-lock" aria-hidden="true"></i>
+						</span>
+					</div>
+
+					<div class="container-login100-form-btn">
+						<button class="login100-form-btn">
+							Login
+						</button>
+					</div>
+
+					<div class="text-center p-t-12">
+						<span class="txt1">
+							Forgot
+						</span>
+						<a class="txt2" href="#">
+							Username / Password?
+						</a>
+					</div>
+
+					<div class="text-center p-t-136">
+						<a class="txt2" href="#">
+							Create your Account
+							<i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
+						</a>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+
+
+
+<!--===============================================================================================-->	
+	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/bootstrap/js/popper.js"></script>
+	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/tilt/tilt.jquery.min.js"></script>
+	<script >
+		$('.js-tilt').tilt({
+			scale: 1.1
+		})
+	</script>
+<!--===============================================================================================-->
+	<script src="js/main.js"></script>
 
 </body>
+</html>
