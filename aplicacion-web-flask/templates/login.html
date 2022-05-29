@@ -22,7 +22,7 @@
 <!--===============================================================================================-->
 </head>
 <body>
-
+<form action="" method=post enctype=multipart/form-data>
 	<div class="limiter">
 		<div class="container-login100">
 
@@ -31,6 +31,10 @@
 					<span class="login100-form-title">
 						Member Login
 					</span>
+{% block body %}
+  {% if error %}
+    <p class=error><strong>Error:</strong> {{ error }}
+  {% endif %}
 
 					<div class="wrap-input100 validate-input">
 						<input class="input100" type="text" name="username" placeholder="Username">
@@ -54,6 +58,7 @@
 						
 						
 					</div>
+ </form>
 
 					
 
@@ -84,6 +89,6 @@
 	</script>
 <!--===============================================================================================-->
 	<script src="js/main.js"></script>
-
+{% endblock %}
 </body>
 </html>
