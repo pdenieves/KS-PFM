@@ -1,94 +1,71 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
 <head>
+    <title>MeridIA</title>
     <link rel="stylesheet" href="/static/css/main.css">
-	<title>Login V1</title>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-<!--===============================================================================================-->	
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
-<!--===============================================================================================-->	
-	<link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="css/util.css">
-	<link rel="stylesheet" type="text/css" href="css/main.css">
-<!--===============================================================================================-->
 </head>
 <body>
-<form action="" method=post enctype=multipart/form-data>
-	<div class="limiter">
-		<div class="container-login100">
+  <div id="header">
+    <table width="800">
+      <tr><td><img src="/static/images/logo-330x355.png" width="120px" /></td></tr>
+    </table>
+  </div>
+  <p>Scale your face images... <strong>without quality loss!</strong></p>
 
+  {% block body %}
 
-				<form class="login100-form validate-form">
-					<span class="login100-form-title">
-						Member Login
-					</span>
-{% block body %}
-  {% if error %}
-    <p class=error><strong>Error:</strong> {{ error }}
-  {% endif %}
+  <table width="800">
+    <tr>
+      <td width="400">
+        <div id="juxtapose"></div>
+        <script src="https://cdn.knightlab.com/libs/juxtapose/latest/js/juxtapose.min.js"></script>
+        <link rel="stylesheet" href="https://cdn.knightlab.com/libs/juxtapose/latest/css/juxtapose.css">
+        <script>
+        ids = [297,365,446,474];
+        id = ids[ Math.floor(Math.random()*ids.length) ]
+        slider = new juxtapose.JXSlider(
+            "#juxtapose",
+            [
+                {
+                  src: "/static/demo/file" + id + "_low.jpg",
+                  label: "No MeridIA"
+                },
+                {
+                  src: "/static/demo/file" + id + "_high.jpg",
+                  label: "Using MeridIA"
+                }
+            ],
+            {
+                animate: true,
+                showLabels: true,
+                showCredits: false,
+                startingPosition: "40%",
+                makeResponsive: true
+            });
+        </script>
+      </td>
+      <td style="border: 1px solid white;">
+        <p>Access to scale your images</p>
+        {% if error %}
+        <p class="error">Error: {{ error }}</p>
+        <p class="warning">Try demo / demo</p>
+        {% endif %}
+        <form id="login" action="" method="post" enctype="multipart/form-data">
+            <table>
+            <tr><td>
+                 <input type="text" name="username" placeholder="user">
+            </td></tr>
+            <tr><td>
+                <input type="password" name="password" placeholder="pass">
+            </td></tr>
+            <tr><td>
+                <input type="submit" value="login">
+            </td></tr>
+            </table>
+        </form>
+      </td>
+    </tr>
+  </table>
 
-					<div class="wrap-input100 validate-input">
-						<input class="input100" type="text" name="username" placeholder="Username">
-						<span class="focus-input100"></span>
-						<span class="symbol-input100">
-				
-						</span>
-					</div>
+  {% endblock %}
 
-					<div class="wrap-input100 validate-input">
-						<input class="input100" type="password" name="password" placeholder="Password">
-						<span class="focus-input100"></span>
-						<span class="symbol-input100">
-							
-						</span>
-					</div>
-
-					<div class="container-login100-form-btn">
-                    
-						<input type="submit" value="login">
-						
-						
-					</div>
- </form>
-
-					
-
-					<div class="text-center p-t-136">
-						
-					</div>
-				</form>
-			</div>
-		</div>
-	
-
-
-
-
-<!--===============================================================================================-->	
-	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
-<!--===============================================================================================-->
-	<script src="vendor/bootstrap/js/popper.js"></script>
-	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-<!--===============================================================================================-->
-	<script src="vendor/select2/select2.min.js"></script>
-<!--===============================================================================================-->
-	<script src="vendor/tilt/tilt.jquery.min.js"></script>
-	<script >
-		$('.js-tilt').tilt({
-			scale: 1.1
-		})
-	</script>
-<!--===============================================================================================-->
-	<script src="js/main.js"></script>
-{% endblock %}
 </body>
-</html>

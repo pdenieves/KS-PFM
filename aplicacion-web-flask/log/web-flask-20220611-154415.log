@@ -1,0 +1,10 @@
+2022-06-11 15:44:17,842 WARNING app MainThread : Levantando la web
+2022-06-11 15:44:18,065 INFO werkzeug MainThread :  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2022-06-11 15:44:18,548 INFO werkzeug Thread-1 : 127.0.0.1 - - [11/Jun/2022 15:44:18] "GET /login/ HTTP/1.1" 200 -
+2022-06-11 15:44:19,024 INFO werkzeug Thread-2 : 127.0.0.1 - - [11/Jun/2022 15:44:19] "[36mGET /static/css/main.css HTTP/1.1[0m" 304 -
+2022-06-11 15:44:19,077 INFO werkzeug Thread-4 : 127.0.0.1 - - [11/Jun/2022 15:44:19] "[36mGET /static/demo/file474_low.jpg HTTP/1.1[0m" 304 -
+2022-06-11 15:44:19,151 INFO werkzeug Thread-3 : 127.0.0.1 - - [11/Jun/2022 15:44:19] "GET /static/images/logo-330x355.png HTTP/1.1" 200 -
+2022-06-11 15:44:19,393 INFO werkzeug Thread-5 : 127.0.0.1 - - [11/Jun/2022 15:44:19] "[33mGET /static/fonts/poppins/Poppins-Regular.ttf HTTP/1.1[0m" 404 -
+2022-06-11 15:44:19,398 INFO werkzeug Thread-6 : 127.0.0.1 - - [11/Jun/2022 15:44:19] "[36mGET /static/demo/file474_high.jpg HTTP/1.1[0m" 304 -
+2022-06-11 15:44:19,734 INFO werkzeug Thread-7 : 127.0.0.1 - - [11/Jun/2022 15:44:19] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2022-06-11 15:44:45,608 WARNING app MainThread : Web no disponible

@@ -16,21 +16,7 @@ from app import app, log_image
 
 # Revisamos si se trata de una imagen a partir de la extensión del fichero
 def allowed_file(filename):
-    return '.' in filename and filename.rsplit('.', 1)[1].lower() in app.config['ALLOWED_EXTENSIONS']
-
-
-# Validamos que el fichero tiene dimensiones correctas
-def allowed_size(filename):
-    LIM_INF = 100
-    LIM_SUP = 500
-    img = Image.open(filename)
-    width, height = img.size
-    img.close()
-    if width < LIM_INF or width > LIM_SUP or height < LIM_INF or height > LIM_SUP:
-        allowed = False
-    else:
-        allowed = True
-    return allowed
+	return '.' in filename and filename.rsplit('.', 1)[1].lower() in app.config['ALLOWED_EXTENSIONS']
 
 
 # Función que calcula el PSNR (Peak Signal to Noise Ratio). Usaremos el PSNR como métrica de nuestro modelo

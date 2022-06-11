@@ -1,65 +1,35 @@
-<html lang="en">
+<!doctype html>
 <head>
-  	 <link rel="stylesheet" href="/static/css/main.css">
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-<!--===============================================================================================-->	
-	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
-<!--===============================================================================================-->	
-	<link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="css/util.css">
-	<link rel="stylesheet" type="text/css" href="css/main.css">
-<!--===============================================================================================-->
+    <title>MeridIA</title>
+    <link rel="stylesheet" href="/static/css/main.css">
 </head>
 <body>
+  <div id="header">
+    <table width="800">
+      <tr><td><img src="/static/images/logo-330x355.png" width="120px" /></td></tr>
+    </table>
+  </div>
+  <p>&nbsp;</p>
 
-	<div class="limiter">
-		<div class="container-login100">
-		
-				
+  <table width="800">
+    <tr>
+      <td width="400">
+        <div class="juxtapose" data-startingposition="40%">
+            <img data-label="Direct Scaled" src="/static/uploads/{{ filename }}" />
+            <img data-label="Scaled With MeridIA" src="/static/generated/{{ filename_new }}" />
+        </div>
+        <script src="https://cdn.knightlab.com/libs/juxtapose/latest/js/juxtapose.min.js"></script>
+        <link rel="stylesheet" href="https://cdn.knightlab.com/libs/juxtapose/latest/css/juxtapose.css">
+      </td>
+      <td style="border: 1px solid white;">
+        <p>Download the scaled photo with MeridIA</p>
+        <a href="/return-files/{{ filename_new }}" target="blank"><button>download</button></a>
+      </td>
+    </tr>
+    <tr>
+      <td><div class="back"><a href="/uploadfile"><< Try another image</a></div></td>
+    </tr>
+  </table>
 
-				<form class="login100-form validate-form">
-					<span class="login100-form-title">
-						Download the scaled photo with UnBlurAI
-					</span>
-                  <form action="" method=post enctype=multipart/form-data>
-            <a  class="login100-form-btn" href="/return-files/{{ filename_new }}" target="blank"><button class="login100-form-btn"> download</button></a>
-            
-        </form>
-					
-				</form>
-			</div>
-		</div>
-
-
-
-
-
-<!--===============================================================================================-->	
-	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
-<!--===============================================================================================-->
-	<script src="vendor/bootstrap/js/popper.js"></script>
-	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-<!--===============================================================================================-->
-	<script src="vendor/select2/select2.min.js"></script>
-<!--===============================================================================================-->
-	<script src="vendor/tilt/tilt.jquery.min.js"></script>
-	<script >
-		$('.js-tilt').tilt({
-			scale: 1.1
-		})
-	</script>
-<!--===============================================================================================-->
-	<script src="js/main.js"></script>
 
 </body>
-</html>
